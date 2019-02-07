@@ -1,0 +1,7 @@
+body{
+    background: #3d3d3d;
+    color: orange;
+    font-family: Consolas, monospace;
+}
+::-moz-selection { background: orange; color: #3d3d3d }
+::selection { background: orange; color: #3d3d3d }

@@ -1,0 +1,46 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <h1>
+        Welcome to {{title}}!
+    </h1>
+    <h3 style="text-align: center; font-size: 12px;">Choose one for details</h3>
+</div>
+<div class="wrap">
+    <div class="todo-list">
+        <h2>Need to do</h2>
+        <div *ngFor="let todo of toDoList"
+             [class.selected]="todo === selectedItem"
+             (click)="onSelect(todo)"
+             class="list-item">
+            <div *ngIf="!todo.done" class="item-wrap">
+                <span>{{todo.title}}</span>
+                <span class="status">status:</span>
+                <span *ngIf="!todo.done" class="not-done">todo</span>
+            </div>
+        </div>
+    </div>
+    <div class="done-list">
+        <h2>Done</h2>
+        <div *ngFor="let todo of toDoList"
+             [class.selected]="todo === selectedItem"
+             (click)="onSelect(todo)" class="list-item">
+            <div *ngIf="todo.done" class="item-wrap">
+                <span>{{todo.title}}</span>
+                <span class="status">status:</span>
+                <span *ngIf="todo.done" class="done">done</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="details-wrap" *ngIf="selectedItem">
+    <h2>Details</h2>
+    <label><span class="status">Title:</span> <input [(ngModel)]="selectedItem.title"></label>
+    <br>
+    <label><span class="status">Status:</span> <input type="checkbox" [(ngModel)]="selectedItem.done"></label>
+    <br>
+    <label><span class="status">Priority:</span> <input type="number" [(ngModel)]="selectedItem.priority"></label>
+</div>
+
+
+<ng-template #needToDo><span class="not-done">todo</span></ng-template>
